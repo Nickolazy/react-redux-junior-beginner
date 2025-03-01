@@ -37,33 +37,35 @@ const Authorization = ({setAuth}) => {
 
   const handleAuth = (code) => {
     if (code === CODE) {
-      setAuth(true)
-      navigate("/home")
+      setTimeout(() => {
+        setAuth(true)
+        navigate("/home")
+      })
     } else {
       setCodeNum("")
     }
   }
 
   return (
-    <div className='overflow-hidden flex flex-col items-center gap-y-10 p-14'>
-      <img src="src\assets\icons\auth\Coin_black.svg" className='dark:hidden' />
-      <img src="src\assets\icons\auth\Coin_white.svg" className='hidden dark:block' />
+    <div className='h-screen flex flex-col items-center justify-center gap-y-10 p-14'>
+      <img src=".\src\assets\icons\auth\Coin_black.svg" className='dark:hidden' />
+      <img src=".\src\assets\icons\auth\Coin_white.svg" className='hidden dark:block' />
 
       <h1>
         Enter your Pin
       </h1>
 
-      <div className='flex gap-8 my-16'>
+      <div className='flex gap-8 my-12 md:my-16'>
         { Array(4).fill().map((_, index) => (
           <div key={index} className={ `${codeNum.length > index ? 'bg-white' : 'bg-yellow'}
             ${shake ? 'shake' : ''} size-4 rounded-full duration-300 transition-colors` }></div>
         )) }
       </div>
 
-      <div className='grid grid-cols-3 gap-x-14 gap-y-10'>
+      <div className='grid grid-cols-3 gap-x-8 gap-y-5'>
         { numberField.map((btnValue, index) => (
           <button key={index} onClick={() => handlePinCode(btnValue)} 
-            className={ `${ typeof btnValue === 'number' ? 'text-3xl font-medium' : 'text-lg font-normal' } py-6 px-5 active:bg-white dark:active:bg-darker rounded-full select-none` }
+            className={ `${ typeof btnValue === 'number' ? 'text-3xl font-medium' : 'text-lg font-normal' } px-2 py-3 md:px-5 md:py-6 active:bg-white dark:active:bg-darker rounded-full select-none` }
           >
             { btnValue }
           </button>

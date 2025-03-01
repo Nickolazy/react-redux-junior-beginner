@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const animationPath = "src/assets/loading_animation_frames/";
+const animationPath = "./src/assets/loading_animation_frames/";
 const frames = Array.from({ length: 6 }, (_, i) => `${animationPath}frame${i + 1}.svg`);
 
 const Loading = () => {
@@ -15,8 +15,8 @@ const Loading = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen text-white">
-      <img src={frames[currentFrame]} alt="Loading..." />
+    <div className="flex justify-center items-center text-white">
+      <img className='mt-64' src={frames[currentFrame]} alt="Loading..." />
     </div>
   );
 };

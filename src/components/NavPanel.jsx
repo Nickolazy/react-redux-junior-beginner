@@ -2,12 +2,12 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const NavPanel = () => {
-  const path = "src/assets/icons/nav/"
-  const pathActive = "src/assets/icons/nav/active/"
+  const path = "./src/assets/icons/nav/"
+  const pathActive = "./src/assets/icons/nav/active/"
 
   const nav = {
     coins: 'Coin.svg',
-    operations: 'Operations.svg',
+    operation: 'Operation.svg',
     home: 'Home.svg',
     cards: 'Card.svg',
     settings: 'Settings.svg'
