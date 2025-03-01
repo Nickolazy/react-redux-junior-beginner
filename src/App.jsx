@@ -17,10 +17,10 @@ function App() {
   }, [])
 
   return (
-    <Router>
+    <Router basename="/react-redux-junior-beginner">
       <div>
         { isLoading ? <Loading /> : 
-          !isAuth ? <CurrentPage /> : 
+          isAuth ? <CurrentPage /> : 
           <Authorization setAuth={setAuth}/>
           }
       </div>
