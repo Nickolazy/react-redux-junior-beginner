@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
+import { BrowserRouter as Router } from "react-router-dom"
+
 import Loading from "./components/Loading"
 import Authorization from "./components/Authorization"
-import Home from "./components/Pages/Home"
+import CurrentPage from "./components/CurrentPage"
 
 const TIME_OF_LOADING = 1500
 function App() {
@@ -15,16 +17,16 @@ function App() {
   }, [])
 
   return (
-    <>
-      <div className="w-screen h-screen">
+    <Router>
+      <div>
         { isLoading ? <Loading /> : 
-          isAuth ? <Home /> : 
+          !isAuth ? <CurrentPage /> : 
           <Authorization setAuth={setAuth}/>
           }
       </div>
 
       <hr className='md:hidden absolute bottom-2 left-1/3 w-1/3 border-[3px] text-white rounded-full' />
-    </>
+    </Router>
   )
 }
 

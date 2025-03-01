@@ -17,9 +17,7 @@ export default {
         light: '#F4F1EB',
         ligther: '#E5E3E3',
 
-        yellow: '#CCAF7E',
-        yellower: '#FFE8BF',
-
+        yellow: '#CCAF7E'
       }
     },
   },

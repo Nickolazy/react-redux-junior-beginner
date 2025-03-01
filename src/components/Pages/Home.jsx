@@ -7,8 +7,6 @@ const HomePage = () => {
       <div className='my-auto text-3xl font-bold flex justify-center'>
         ПРИВЕТ, САЧКА
       </div>
-      
-      <NavPanel />
     </div>
   )
 }
