@@ -1,28 +1,39 @@
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-const NavPanel = ({activePage}) => {
-  const path = "src/assets/icons/nav/";
+const NavPanel = () => {
+  const path = "src/assets/icons/nav/"
+  const pathActive = "src/assets/icons/nav/active/"
+
   const nav = {
-    coin: 'Coin.svg',
+    coins: 'Coin.svg',
     operations: 'Operations.svg',
-    Home: 'Home.svg',
-    card: 'Card.svg',
+    home: 'Home.svg',
+    cards: 'Card.svg',
     settings: 'Settings.svg'
   }
 
+  const location = useLocation()
+  const currentPath = location.pathname.split("/")[1]
+
+  const upperFirstLetter = (key) => {
+    return key.charAt(0).toUpperCase() + currentPath.slice(1);
+  }
+
   return (
-    <div className='flex justify-evenly py-10'>
+    <div className='flex justify-around items-end py-10'>
       {Object.keys(nav).map((key) => {
-        const isActive = activePage === key;
+        const isActive = currentPath === key
         
         return (
-          <div key={key} className={`${isActive ? 'nav-item active' : 'nav-item'} select-none`}>
-            <button>
-              <img src={path + nav[key]} alt={key} className='size-10'/>
+          <Link to={`/${key.toLowerCase()}`} key={key} className='flex flex-col items-center select-none'>
 
-              {isActive ? <span className='size-7'>{key}</span> : ""}
-            </button>
-          </div>
+            <img src={isActive ? pathActive + nav[key] : path + nav[key]} alt={key} className='size-16 hover:-translate-y-2.5 p-1.5 
+            active:scale-90 transition duration-300'/>
+
+            {isActive ? <span className='text-sm'>{upperFirstLetter(key)}</span> : ""}
+
+          </Link>
         )
       })}
     </div>

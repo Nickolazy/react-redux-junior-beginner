@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Authorization = ({setAuth}) => {
   const CODE = "6489"
@@ -7,6 +8,7 @@ const Authorization = ({setAuth}) => {
     1, 2, 3, 4, 5, 6, 7, 8, 9, "Back", 0, "Clear"
   ]
 
+  const navigate = useNavigate()
   const [codeNum, setCodeNum] = useState("")
   const [shake, setShake] = useState(false)
 
@@ -23,7 +25,8 @@ const Authorization = ({setAuth}) => {
       }
 
       if (newCodeNum.length === 4) {
-        checkCode(newCodeNum)
+        handleAuth(newCodeNum)
+
         setShake(true)
         setTimeout(() => setShake(false), 500)
       }
@@ -32,9 +35,10 @@ const Authorization = ({setAuth}) => {
     })
   }
 
-  const checkCode = (code) => {
+  const handleAuth = (code) => {
     if (code === CODE) {
       setAuth(true)
+      navigate("/home")
     } else {
       setCodeNum("")
     }
